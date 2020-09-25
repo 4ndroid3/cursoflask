@@ -1,12 +1,10 @@
 from flask import request, make_response, redirect, render_template, session, url_for, flash
 import unittest
+from app.firestore_service import get_users, get_todos
 
 from app import create_app
 
 app = create_app()
-
-todos = ['TODO 1', 'TODO 2', 'TODO 3']
-
 
 @app.cli.command() # cli = command line interface
 def test():
@@ -41,9 +39,16 @@ def hello():
 
     context = {
         'user_ip': user_ip,
-        'todos': todos,
+        'todos': get_todos(user_id=username),
         'username': username
     }
+
+    users = get_users()
+
+    users = get_users()
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
       
     return render_template('hello.html', **context)
     # al poner **variable, cuando el template recibe la variabl
