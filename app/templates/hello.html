@@ -1,0 +1,33 @@
+<!-- extiendo el archivo base html -->
+{% extends 'base.html'%}
+<!--importo el template macros-->
+{% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<!-- pongo el super() para que no me reemplace todo el titulo -->
+{% block title %}    
+    {{ super() }}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
+    {% if username %}
+        <h1>Bienvenido {{ username | capitalize}}</h1> <!-- si le agrego capitalize me pone la primeraletra en mayus-->
+    {% endif %}
+
+    {% if user_ip %}
+        <h3>Hello World, tu IP es {{ user_ip }}</h3>
+    {% else %}
+        <a href="{{ url_for('index') }}">Ir a inicio</a>
+    {% endif %}
+
+    <!-- ul es una lista de elementos -->
+    <ul>
+        <!-- Comienzo y final de un bucle for-->
+        <!-- invoco una funcion que llama a lo que tengo dentro de macros.html-->
+        {% for todo in todos %}
+            {{ macros.render_todo(todo)}}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
