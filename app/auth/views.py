@@ -4,7 +4,7 @@ from app.forms import LoginForm
 
 from . import auth
 
-
+# El metodo POST, es un comando de flask para obtener devoluciones del serv.
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
