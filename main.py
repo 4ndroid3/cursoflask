@@ -51,14 +51,6 @@ def hello():
         'username': username
     }
 
-    users = get_users()
-
-    for user in users:
-        # Levanto los usuarios de firestore
-        print(user.id)
-        # Levanto las contraseñas de usuarios en firestore
-        print(user.to_dict()['password'])
-
     return render_template('hello.html', **context)
     # al poner **variable, cuando el template recibe la variabl
     # la recibe ya "desplegada"
