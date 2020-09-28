@@ -9,6 +9,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Enviar') # Creo un botón
 
+
 class TodoForm(FlaskForm):
     descripcion = StringField('Descripcion', validators=[DataRequired()])
     submit = SubmitField('Crear')
+
+
+class DeleteTodoForm(FlaskForm):
+    submit = SubmitField('Borrar')
